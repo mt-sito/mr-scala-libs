@@ -3,11 +3,11 @@ mr-scala-libs
 
 Scala libraries.
 
-# ŠÂ‹«
+# ç’°å¢ƒ
 * Scala 2.10.x
 * Scala 2.11.x
 
-# ƒZƒbƒgƒbƒv
+# ã‚»ãƒƒãƒˆãƒƒãƒ—
 ```
 resolvers += "Mt.sito Maven Repository" at "http://mt-sito.github.com/mvn-repo"
 
