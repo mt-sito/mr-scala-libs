@@ -15,6 +15,11 @@ object ApplicationBuild extends Build {
 			organization := appOrganization,
 			version := appVersion,
 			scalaVersion := buildScalaVersion,
+			publishMavenStyle := true,
+			otherResolvers := Seq(Resolver.file("dotM2", file(Path.userHome + "/.m2/repository"))),
+			publishLocalConfiguration <<= (packagedArtifacts, deliverLocal, ivyLoggingLevel) map {
+				(arts, _, level) => new PublishConfiguration(None, "dotM2", arts, List[String](), level)
+			},
 
 			crossScalaVersions := Seq(
 				"2.10.4",
