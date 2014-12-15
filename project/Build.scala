@@ -4,7 +4,7 @@ import Keys._
 
 object ApplicationBuild extends Build {
 	val appName = "mr-scala-libs"
-	val appVersion = "1.0.0"
+	val appVersion = "1.0.1"
 	val appOrganization = "com.github.mt_sito"
 	val buildScalaVersion = "2.11.4"
 
