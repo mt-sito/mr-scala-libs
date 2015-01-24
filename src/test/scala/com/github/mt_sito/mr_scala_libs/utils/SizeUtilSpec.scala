@@ -8,15 +8,15 @@ import org.scalatest.FlatSpec
  */
 class SizeUtilSpec extends FlatSpec {
 	"siString" should "0 を与えた場合バイト表記を返す" in {
-		assert(SizeUtil.siString(0) === "0.00 B")
+		assert(SizeUtil.siString(0) === "0 B")
 	}
 
 	it should "5 を与えた場合バイト表記を返す" in {
-		assert(SizeUtil.siString(5) === "5.00 B")
+		assert(SizeUtil.siString(5) === "5 B")
 	}
 
 	it should "1000 を与えた場合キロバイト表記を返す" in {
-		assert(SizeUtil.siString(1000) === "1.00 kB")
+		assert(SizeUtil.siString(1000) === "1 kB")
 	}
 
 	it should "1024 を与えた場合キロバイト表記を返す" in {
@@ -24,7 +24,7 @@ class SizeUtilSpec extends FlatSpec {
 	}
 
 	it should "1000000 を与えた場合メガバイト表記を返す" in {
-		assert(SizeUtil.siString(1000000) === "1.00 MB")
+		assert(SizeUtil.siString(1000000) === "1 MB")
 	}
 
 	it should "1048576 を与えた場合メガバイト表記を返す" in {
@@ -32,7 +32,7 @@ class SizeUtilSpec extends FlatSpec {
 	}
 
 	it should "1000000000 を与えた場合ギガバイト表記を返す" in {
-		assert(SizeUtil.siString(1000000000) === "1.00 GB")
+		assert(SizeUtil.siString(1000000000) === "1 GB")
 	}
 
 	it should "1073741824 を与えた場合ギガバイト表記を返す" in {
@@ -40,15 +40,15 @@ class SizeUtilSpec extends FlatSpec {
 	}
 
 	it should "1000000000000 を与えた場合テラバイト表記を返す" in {
-		assert(SizeUtil.siString(1000000000000L) === "1.00 TB")
+		assert(SizeUtil.siString(1000000000000L) === "1 TB")
 	}
 
 	it should "1099511627776 を与えた場合テラバイト表記を返す" in {
-		assert(SizeUtil.siString(1099511627776L) === "1.10 TB")
+		assert(SizeUtil.siString(1099511627776L) === "1.1 TB")
 	}
 
 	it should "1000000000000000 を与えた場合ペタバイト表記を返す" in {
-		assert(SizeUtil.siString(1000000000000000L) === "1.00 PB")
+		assert(SizeUtil.siString(1000000000000000L) === "1 PB")
 	}
 
 	it should "1125899906842624 を与えた場合テラバイト表記を返す" in {
@@ -56,7 +56,7 @@ class SizeUtilSpec extends FlatSpec {
 	}
 
 	it should "1000000000000000000 を与えた場合エクサバイト表記を返す" in {
-		assert(SizeUtil.siString(1000000000000000000L) === "1.00 EB")
+		assert(SizeUtil.siString(1000000000000000000L) === "1 EB")
 	}
 
 	it should "1152921504606846976 を与えた場合エクサバイト表記を返す" in {
@@ -67,24 +67,20 @@ class SizeUtilSpec extends FlatSpec {
 		assert(SizeUtil.siString(Long.MaxValue) === "9.22 EB")
 	}
 
-	it should "フォーマット指定時指定フォーマットで整形された表記を返す" in {
-		assert(SizeUtil.siString(1024, "%1$.0f%2$s") === "1kB")
-	}
-
 	"binString" should "0 を与えた場合バイト表記を返す" in {
-		assert(SizeUtil.binString(0) === "0.00 B")
+		assert(SizeUtil.binString(0) === "0 B")
 	}
 
 	it should "5 を与えた場合バイト表記を返す" in {
-		assert(SizeUtil.binString(5) === "5.00 B")
+		assert(SizeUtil.binString(5) === "5 B")
 	}
 
 	it should "1000 を与えた場合バイト表記を返す" in {
-		assert(SizeUtil.binString(1000) === "1000.00 B")
+		assert(SizeUtil.binString(1000) === "1000 B")
 	}
 
 	it should "1024 を与えた場合キビバイト表記を返す" in {
-		assert(SizeUtil.binString(1024) === "1.00 KiB")
+		assert(SizeUtil.binString(1024) === "1 KiB")
 	}
 
 	it should "1000000 を与えた場合キビバイト表記を返す" in {
@@ -92,7 +88,7 @@ class SizeUtilSpec extends FlatSpec {
 	}
 
 	it should "1048576 を与えた場合メビバイト表記を返す" in {
-		assert(SizeUtil.binString(1048576) === "1.00 MiB")
+		assert(SizeUtil.binString(1048576) === "1 MiB")
 	}
 
 	it should "1000000000 を与えた場合メビバイト表記を返す" in {
@@ -100,7 +96,7 @@ class SizeUtilSpec extends FlatSpec {
 	}
 
 	it should "1073741824 を与えた場合ギビバイト表記を返す" in {
-		assert(SizeUtil.binString(1073741824) === "1.00 GiB")
+		assert(SizeUtil.binString(1073741824) === "1 GiB")
 	}
 
 	it should "1000000000000 を与えた場合ギビバイト表記を返す" in {
@@ -108,7 +104,7 @@ class SizeUtilSpec extends FlatSpec {
 	}
 
 	it should "1099511627776 を与えた場合テビバイト表記を返す" in {
-		assert(SizeUtil.binString(1099511627776L) === "1.00 TiB")
+		assert(SizeUtil.binString(1099511627776L) === "1 TiB")
 	}
 
 	it should "1000000000000000 を与えた場合テビバイト表記を返す" in {
@@ -116,7 +112,7 @@ class SizeUtilSpec extends FlatSpec {
 	}
 
 	it should "1125899906842624 を与えた場合ペビバイト表記を返す" in {
-		assert(SizeUtil.binString(1125899906842624L) === "1.00 PiB")
+		assert(SizeUtil.binString(1125899906842624L) === "1 PiB")
 	}
 
 	it should "1000000000000000000 を与えた場合ペビバイト表記を返す" in {
@@ -124,14 +120,10 @@ class SizeUtilSpec extends FlatSpec {
 	}
 
 	it should "1152921504606846976 を与えた場合エクスビバイト表記を返す" in {
-		assert(SizeUtil.binString(1152921504606846976L) === "1.00 EiB")
+		assert(SizeUtil.binString(1152921504606846976L) === "1 EiB")
 	}
 
 	it should "Long の最大値を与えた場合エクサバイト表記を返す" in {
-		assert(SizeUtil.binString(Long.MaxValue) === "8.00 EiB")
-	}
-
-	it should "フォーマット指定時指定フォーマットで整形された表記を返す" in {
-		assert(SizeUtil.binString(1000000, "%1$#.4f%2$s") === "976.5625KiB")
+		assert(SizeUtil.binString(Long.MaxValue) === "8 EiB")
 	}
 }
