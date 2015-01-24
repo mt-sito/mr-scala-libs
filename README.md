@@ -11,5 +11,5 @@ Scala libraries.
 ```
 resolvers += "Mt.sito Maven Repository" at "http://mt-sito.github.com/mvn-repo"
 
-libraryDependencies += "com.github.mt_sito" %% "mr-scala-libs" % "1.0.2"
+libraryDependencies += "com.github.mt_sito" %% "mr-scala-libs" % "1.0.3"
 ```
