@@ -34,7 +34,6 @@ object SizeUtil {
 	 * 2 進数表記文字列取得。
 	 *
 	 * @param size サイズ
-	 * @param format フォーマット。デフォルト - %1$#.2f %2$s
 	 * @return サイズ文字列
 	 */
 	def binString(size: Long): String = mkString(size, BIN_DENOMINATOR, BIN)
