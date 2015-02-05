@@ -6,7 +6,7 @@ import scala.annotation.tailrec
 
 
 /**
- * パスユーティリティおブジェクト。
+ * パスユーティリティオブジェクト。
  */
 object PathUtil {
 	/**

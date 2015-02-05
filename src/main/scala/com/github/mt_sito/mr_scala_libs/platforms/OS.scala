@@ -5,7 +5,11 @@ package com.github.mt_sito.mr_scala_libs.platforms
  * OS ベースクラス。
  */
 sealed abstract class OS(val id: Int, val name: String, val pathSeparator: String) {
-	/** {@inheritDoc} */
+	/**
+	 * 文字列化。
+	 *
+	 * @return 文字列表現
+	 */
 	override def toString: String = name
 
 	/** パスプレフィックス長 */
@@ -18,7 +22,7 @@ sealed abstract class OS(val id: Int, val name: String, val pathSeparator: Strin
  */
 object OS {
 	case object WINDOWS extends OS(1, "Windows", "\\") {
-		/** {@inhritDoc} */
+		/** {@inheritDoc} */
 		override def pathPrefixLength(path: String): Int = if (path.startsWith("""\\""")) 2 else 3
 	}
 	case object LINUX extends OS(2, "Linux", "/")
