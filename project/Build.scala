@@ -28,7 +28,7 @@ object ApplicationBuild extends Build {
 			),
 
 			libraryDependencies ++= Seq(
-				"commons-codec" % "commons-codec" % "1.9",
+				"commons-codec" % "commons-codec" % "1.10",
 				"org.scalatest" %% "scalatest" % "3.0.1" % "test"
 			)
 		)
