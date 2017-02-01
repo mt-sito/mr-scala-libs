@@ -1,13 +1,36 @@
 package com.github.mt_sito.mr_scala_libs.utils
 
 import java.text.DecimalFormat
+
 import scala.annotation.tailrec
 
 
 /**
- * サイズユーティリティおブジェクト。
+ * サイズユーティリティオブジェクト。
  */
-object SizeUtil {
+trait SizeUtil {
+	/**
+	 * SI 表記文字列取得。
+	 *
+	 * @param size サイズ
+	 * @return サイズ文字列
+	 */
+	def siString(size: Long): String
+
+	/**
+	 * 2 進数表記文字列取得。
+	 *
+	 * @param size サイズ
+	 * @return サイズ文字列
+	 */
+	def binString(size: Long): String
+}
+
+
+/**
+ * サイズユーティリティ実装クラス。
+ */
+class SizeUtilImpl extends SizeUtil {
 	/** SI 桁 */
 	private val SI_DENOMINATOR = 1000
 	/** 2 進数 桁 */
@@ -22,44 +45,39 @@ object SizeUtil {
 	private val FORMAT = "0.##"
 
 
-	/**
-	 * SI 表記文字列取得。
-	 *
-	 * @param size サイズ
-	 * @return サイズ文字列
-	 */
+	/** {@inheritDoc} */
 	def siString(size: Long): String = mkString(size, SI_DENOMINATOR, SI)
 
-	/**
-	 * 2 進数表記文字列取得。
-	 *
-	 * @param size サイズ
-	 * @return サイズ文字列
-	 */
+	/** {@inheritDoc} */
 	def binString(size: Long): String = mkString(size, BIN_DENOMINATOR, BIN)
 
 
-	/**
-	 * 文字列作成。
-	 *
-	 * @param size サイズ
-	 * @param unit 単位
-	 * @return サイズ文字列
-	 */
+	/** {@inheritDoc} */
 	private def mkString(size: Long, denominator: Int, units: List[String]): String =
 		_mkString(size, denominator, units, 0)
 
-	/**
-	 * 文字列作成。
-	 *
-	 * @param size サイズ
-	 * @param unit 単位
-	 * @param count 階数
-	 * @return サイズ文字列
-	 */
+	/** {@inheritDoc} */
 	@tailrec
 	private def _mkString(size: Double, denominator: Int, units: List[String], count: Int): String = {
 		if (size.toLong < denominator) new DecimalFormat(FORMAT).format(size) + " " + units(count)
 		else _mkString(size / denominator, denominator, units, count + 1)
 	}
+}
+
+
+/**
+ * サイズユーティリティコンポーネントトレイト。
+ */
+trait SizeUtilComponent {
+	/** サイズユーティリティ */
+	val sizeUtil: SizeUtil
+}
+
+
+/**
+ * サイズユーティリティコンポーネント実装トレイト。
+ */
+trait SizeUtilComponentImpl {
+	/** サイズユーティリティ */
+	val sizeUtil: SizeUtil = new SizeUtilImpl
 }
