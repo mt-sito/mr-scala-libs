@@ -1,5 +1,7 @@
 package com.github.mt_sito.mr_scala_libs.utils
 
+import com.github.mt_sito.mr_scala_libs.MrScalaLibsFactory
+
 
 /**
  * 数値ユーティリティトレイト。
@@ -32,29 +34,13 @@ trait NumberUtil {
 
 /**
  * 数値ユーティリティ実装クラス。
+ *
+ * @param factory ファクトリクラス
  */
-class NumberUtilImpl extends NumberUtil {
+class NumberUtilImpl(factory: MrScalaLibsFactory) extends NumberUtil {
 	/** {@inheritDoc} */
 	override def isDigit(str: String): Boolean = if (str == null || str.isEmpty) false else str.forall(_.isDigit)
 
 	/** {@inheritDoc} */
 	override def isDigit(str: Option[String]): Boolean = str.map(isDigit(_)).getOrElse(false)
-}
-
-
-/**
- * 数値ユーティリティコンポーネントトレイト。
- */
-trait NumberUtilComponent {
-	/** 数値ユーティリティ */
-	val numberUtil: NumberUtil
-}
-
-
-/**
- * 数値ユーティリティコンポーネント実装トレイト。
- */
-trait NumberUtilComponentImpl {
-	/** 数値ユーティリティ */
-	val numberUtil: NumberUtil = new NumberUtilImpl
 }

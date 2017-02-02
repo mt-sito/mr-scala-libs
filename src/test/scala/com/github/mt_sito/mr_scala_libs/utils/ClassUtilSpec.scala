@@ -2,13 +2,17 @@ package com.github.mt_sito.mr_scala_libs.utils
 
 import java.net.{URL, URLClassLoader}
 
+import com.github.mt_sito.mr_scala_libs.MrScalaLibsFactoryImpl
 import org.scalatest.FlatSpec
 
 
 /**
  * ClassUtil テストスペッククラス。
  */
-class ClassUtilSpec extends FlatSpec with ClassUtilComponentImpl {
+class ClassUtilSpec extends FlatSpec {
+	val classUtil = MrScalaLibsFactoryImpl.classUtil
+
+
 	class CLThread extends Thread {
 		var cl: ClassLoader = _
 

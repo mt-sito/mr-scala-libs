@@ -1,12 +1,16 @@
 package com.github.mt_sito.mr_scala_libs.utils
 
+import com.github.mt_sito.mr_scala_libs.MrScalaLibsFactoryImpl
 import org.scalatest.FlatSpec
 
 
 /**
  * SizeUtil テストスペッククラス。
  */
-class SizeUtilSpec extends FlatSpec with SizeUtilComponentImpl {
+class SizeUtilSpec extends FlatSpec {
+	val sizeUtil = MrScalaLibsFactoryImpl.sizeUtil
+
+
 	"siString" should "0 を与えた場合バイト表記を返す" in {
 		assert(sizeUtil.siString(0) === "0 B")
 	}

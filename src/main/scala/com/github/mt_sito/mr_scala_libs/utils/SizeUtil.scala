@@ -4,6 +4,8 @@ import java.text.DecimalFormat
 
 import scala.annotation.tailrec
 
+import com.github.mt_sito.mr_scala_libs.MrScalaLibsFactory
+
 
 /**
  * サイズユーティリティオブジェクト。
@@ -29,8 +31,10 @@ trait SizeUtil {
 
 /**
  * サイズユーティリティ実装クラス。
+ *
+ * @param factory ファクトリクラス
  */
-class SizeUtilImpl extends SizeUtil {
+class SizeUtilImpl(factory: MrScalaLibsFactory) extends SizeUtil {
 	/** SI 桁 */
 	private val SI_DENOMINATOR = 1000
 	/** 2 進数 桁 */
@@ -62,22 +66,4 @@ class SizeUtilImpl extends SizeUtil {
 		if (size.toLong < denominator) new DecimalFormat(FORMAT).format(size) + " " + units(count)
 		else _mkString(size / denominator, denominator, units, count + 1)
 	}
-}
-
-
-/**
- * サイズユーティリティコンポーネントトレイト。
- */
-trait SizeUtilComponent {
-	/** サイズユーティリティ */
-	val sizeUtil: SizeUtil
-}
-
-
-/**
- * サイズユーティリティコンポーネント実装トレイト。
- */
-trait SizeUtilComponentImpl {
-	/** サイズユーティリティ */
-	val sizeUtil: SizeUtil = new SizeUtilImpl
 }

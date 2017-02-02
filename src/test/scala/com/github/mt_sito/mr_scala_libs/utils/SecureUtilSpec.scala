@@ -1,12 +1,16 @@
 package com.github.mt_sito.mr_scala_libs.utils
 
+import com.github.mt_sito.mr_scala_libs.MrScalaLibsFactoryImpl
 import org.scalatest.FlatSpec
 
 
 /**
  * SecureUtil テストスペッククラス。
  */
-class SecureUtilSpec extends FlatSpec with SecureUtilComponentImpl {
+class SecureUtilSpec extends FlatSpec {
+	val secureUtil = MrScalaLibsFactoryImpl.secureUtil
+
+
 	"randomToken32" should "毎回違う識別子を返す" in {
 		assert(secureUtil.randomToken32() != secureUtil.randomToken32())
 	}

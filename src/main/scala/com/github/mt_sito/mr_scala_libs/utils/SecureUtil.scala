@@ -5,6 +5,7 @@ import java.util.UUID
 
 import scala.annotation.tailrec
 
+import com.github.mt_sito.mr_scala_libs.MrScalaLibsFactory
 import org.apache.commons.codec.binary.Base64
 
 
@@ -62,8 +63,10 @@ trait SecureUtil {
 
 /**
  * セキュリティユーティリティー実装クラス。
+ *
+ * @param factory ファクトリクラス
  */
-class SecureUtilImpl extends SecureUtil {
+class SecureUtilImpl(factory: MrScalaLibsFactory) extends SecureUtil {
 	/** パスワードセパレータ */
 	val PASSWORD_SEP = "@"
 
@@ -119,22 +122,4 @@ class SecureUtilImpl extends SecureUtil {
 		if(stretchCount == 0) password
 		else doHashPassword(md, md.digest(password), stretchCount - 1)
 	}
-}
-
-
-/**
- * セキュリティユーティリティコンポーネントトレイト。
- */
-trait SecureUtilComponent {
-	/** セキュリティユーティリティ */
-	val secureUtil: SecureUtil
-}
-
-
-/**
- * セキュリティユーティリティコンポーネント実装トレイト。
- */
-trait SecureUtilComponentImpl {
-	/** セキュリティユーティリティ */
-	val secureUtil: SecureUtil = new SecureUtilImpl
 }

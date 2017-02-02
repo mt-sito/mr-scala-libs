@@ -4,6 +4,7 @@ import java.io.File
 
 import scala.annotation.tailrec
 
+import com.github.mt_sito.mr_scala_libs.MrScalaLibsFactory
 import com.github.mt_sito.mr_scala_libs.platforms.OS.WINDOWS
 
 
@@ -69,8 +70,10 @@ trait PathUtil {
 
 /**
  * パスユーティリティ実装クラス。
+ *
+ * @param factory ファクトリクラス
  */
-class PathUtilImpl extends PathUtil {
+class PathUtilImpl(factory: MrScalaLibsFactory) extends PathUtil {
 	/** {@inheritDoc} */
 	override def fileName(path: String, separator: String): String = {
 		require(path != null)
@@ -151,22 +154,4 @@ class PathUtilImpl extends PathUtil {
 		if (name.isEmpty) count
 		else _nameCount(parentPath(path, separator), separator, count + 1)
 	}
-}
-
-
-/**
- * パスユーティリティコンポーネントトレイト。
- */
-trait PathUtilComponent {
-	/** パスユーティリティ */
-	val pathUtil: PathUtil
-}
-
-
-/**
- * パスユーティリティコンポーネント実装トレイト。
- */
-trait PathUtilComponentImpl {
-	/** パスユーティリティ */
-	val pathUtil: PathUtil = new PathUtilImpl
 }

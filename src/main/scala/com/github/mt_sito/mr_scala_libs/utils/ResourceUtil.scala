@@ -4,6 +4,8 @@ import java.io.{File, FileNotFoundException}
 
 import scala.io.Source
 
+import com.github.mt_sito.mr_scala_libs.MrScalaLibsFactory
+
 
 /**
  * リソースユーティリティトレイト。
@@ -22,34 +24,19 @@ trait ResourceUtil {
 
 /**
  * リソースユーティリティ実装クラス。
+ *
+ * @param factory ファクトリクラス
  */
-trait ResourceUtilImpl extends ResourceUtil with ClassUtilComponent {
+class ResourceUtilImpl(factory: MrScalaLibsFactory) extends ResourceUtil {
 	/** {@inheritDoc} */
 	override def getSource(file: File): Source = {
 		assert(file != null, "file is null")
 
 		if (file.exists) return Source.fromFile(file)
 
-		val stream = classUtil.classLoader.getResourceAsStream(file.getPath.replace("\\", "/").replaceAll("^./", ""))
+		val stream = factory.classUtil.classLoader.getResourceAsStream(
+			file.getPath.replace("\\", "/").replaceAll("^./", ""))
 		if (stream == null) throw new FileNotFoundException(file.getPath)
 		Source.fromInputStream(stream)
 	}
-}
-
-
-/**
- * リソースユーティリティコンポーネントトレイト。
- */
-trait ResourceUtilComponent {
-	/** リソースユーティリティ */
-	val resourceUtil: ResourceUtil
-}
-
-
-/**
- * リソースユーティリティコンポーネント実装トレイト。
- */
-trait ResourceUtilComponentImpl {
-	/** リソースユーティリティ */
-	val resourceUtil: ResourceUtil = new ResourceUtilImpl with ClassUtilComponentImpl
 }

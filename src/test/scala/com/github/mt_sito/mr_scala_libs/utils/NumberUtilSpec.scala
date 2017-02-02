@@ -1,12 +1,16 @@
 package com.github.mt_sito.mr_scala_libs.utils
 
+import com.github.mt_sito.mr_scala_libs.MrScalaLibsFactoryImpl
 import org.scalatest.FlatSpec
 
 
 /**
  * NumberUtil テストスペッククラス。
  */
-class NumberUtilSpec extends FlatSpec with NumberUtilComponentImpl {
+class NumberUtilSpec extends FlatSpec {
+	val numberUtil = MrScalaLibsFactoryImpl.numberUtil
+
+
 	"isDigit" should "null の場合 false を返す" in {
 		val str: String = null
 		assert(!numberUtil.isDigit(str))

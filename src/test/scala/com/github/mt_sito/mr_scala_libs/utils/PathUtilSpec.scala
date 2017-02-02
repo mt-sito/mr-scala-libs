@@ -1,12 +1,16 @@
 package com.github.mt_sito.mr_scala_libs.utils
 
+import com.github.mt_sito.mr_scala_libs.MrScalaLibsFactoryImpl
 import org.scalatest.FlatSpec
 
 
 /**
  * PathUtil テストスペッククラス。
  */
-class PathUtilSpec extends FlatSpec with PathUtilComponentImpl {
+class PathUtilSpec extends FlatSpec {
+	val pathUtil = MrScalaLibsFactoryImpl.pathUtil
+
+
 	"fileName" should "ファイル名を返す" in {
 		assert(pathUtil.fileName("""D:\data\aaa.txt""", "\\") === "aaa.txt")
 	}
