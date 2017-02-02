@@ -4,9 +4,9 @@ import Keys._
 
 object ApplicationBuild extends Build {
 	val appName = "mr-scala-libs"
-	val appVersion = "1.0.4"
+	val appVersion = "2.0.0"
 	val appOrganization = "com.github.mt_sito"
-	val buildScalaVersion = "2.11.4"
+	val buildScalaVersion = "2.12.1"
 
 	lazy val root = Project(id = appName,
 		base = file("."),
@@ -22,16 +22,15 @@ object ApplicationBuild extends Build {
 			},
 
 			crossScalaVersions := Seq(
-				"2.10.4",
-				"2.11.4"
+				"2.10.6",
+				"2.11.8",
+				"2.12.1"
 			),
 
-			libraryDependencies += "commons-codec" % "commons-codec" % "1.9",
-
-			libraryDependencies <+= scalaVersion(v => v match {
-				case "2.10.4" => "org.scalatest" % "scalatest_2.10" % "2.0" % "test"
-				case _ => "org.scalatest" %% "scalatest" % "2.2.2" % "test"
-			})
+			libraryDependencies ++= Seq(
+				"commons-codec" % "commons-codec" % "1.10",
+				"org.scalatest" %% "scalatest" % "3.0.1" % "test"
+			)
 		)
 	)
 }
