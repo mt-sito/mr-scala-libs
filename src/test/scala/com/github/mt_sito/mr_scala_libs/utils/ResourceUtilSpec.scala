@@ -1,42 +1,33 @@
 package com.github.mt_sito.mr_scala_libs.utils
 
-import com.github.mt_sito.mr_scala_libs.utils.ResourceUtil.using
+import java.io.{File, FileNotFoundException}
+
+import com.github.mt_sito.mr_scala_libs.using
 import org.scalatest.FlatSpec
 
 
 /**
  * ResourceUtil テストスペッククラス。
  */
-class ResourceUtilSpec extends FlatSpec {
-	/**
-	 * テスト用 close を実装するクラス。
-	 */
-	class Closeable {
-		var closed = false
+class ResourceUtilSpec extends FlatSpec with ResourceUtilComponentImpl {
+	"getSource" should "存在するファイルの場合、指定したファイルのソースを返す" in {
+		using(resourceUtil.getSource(
+			new File("./src/test/scala/com/github/mt_sito/mr_scala_libs/utils/ResourceUtilSpec.scala"))) { actual =>
+			assert(actual != null)
+		}
+	}
 
-		def close(): Unit = { closed = true }
+	it should "存在しないファイルの場合、FileNotFoundException をスローする" in {
+		intercept[FileNotFoundException] {
+			resourceUtil.getSource(new File("./target/Nothing"))
+		}
 	}
 
 
-	"using" should "スコープを抜けた際に close が呼ばれる" in {
-		val closeable = new Closeable
-
-		assert(!closeable.closed)
-		using(closeable) { r =>
-			assert(!closeable.closed)
+	it should "クラスパス内に存在するファイルの場合、指定したファイルのソースを返す" in {
+		using(resourceUtil.getSource(
+			new File("com/github/mt_sito/mr_scala_libs/utils/resourceUtilSpec.class"))) { actual =>
+			assert(actual != null)
 		}
-		assert(closeable.closed)
-	}
-
-	it should "例外発生時スコープを抜けた際に close が呼ばれ例外をスローされる" in {
-		val closeable = new Closeable
-
-		intercept[Exception] {
-			using(closeable) { r =>
-				assert(!closeable.closed)
-				throw new Exception
-			}
-		}
-		assert(closeable.closed)
 	}
 }
