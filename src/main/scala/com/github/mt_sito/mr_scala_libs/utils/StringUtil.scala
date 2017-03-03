@@ -57,6 +57,7 @@ class StringUtilImpl(factory: MrScalaLibsFactory) extends StringUtil {
 			else if (ch == 'ヵ') sb.append('か')
 			else if (ch == 'ヶ') sb.append('け')
 			else if (ch == 'ヴ') sb.append('う')
+			else sb.append(ch)
 		}
 		return sb.toString;
 	}
