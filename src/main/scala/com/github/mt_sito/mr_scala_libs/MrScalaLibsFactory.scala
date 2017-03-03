@@ -19,6 +19,8 @@ trait MrScalaLibsFactory {
 	val secureUtil: SecureUtil
 	/** サイズユーティリティ */
 	val sizeUtil: SizeUtil
+	/** 文字列ユーティリティ */
+	val stringUtil: StringUtil
 }
 
 object MrScalaLibsFactoryImpl extends MrScalaLibsFactory {
@@ -34,4 +36,6 @@ object MrScalaLibsFactoryImpl extends MrScalaLibsFactory {
 	val secureUtil: SecureUtil = new SecureUtilImpl(this)
 	/** {@inheritDoc} */
 	val sizeUtil: SizeUtil = new SizeUtilImpl(this)
+	/** {@inheritDoc} */
+	val stringUtil: StringUtil = new StringUtilImpl(this)
 }
