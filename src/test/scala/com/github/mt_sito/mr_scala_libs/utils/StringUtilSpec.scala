@@ -20,6 +20,6 @@ class StringUtilSpec extends FlatSpec {
 	}
 
 	"katakanaToHiragana" should "カタカナがひらがなへ変換される" in {
-		assert(stringUtil.katakanaToHiragana("カタカナヴヵヶ") === "かたかなうかけ")
+		assert(stringUtil.katakanaToHiragana("カタカナヴヵヶあ") === "かたかなうかけあ")
 	}
 }
