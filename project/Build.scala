@@ -6,7 +6,7 @@ object ApplicationBuild extends Build {
 	val appName = "mr-scala-libs"
 	val appVersion = "2.1.1"
 	val appOrganization = "com.github.mt_sito"
-	val buildScalaVersion = "2.12.1"
+	val buildScalaVersion = "2.12.2"
 
 	lazy val root = Project(id = appName,
 		base = file("."),
@@ -24,12 +24,12 @@ object ApplicationBuild extends Build {
 			crossScalaVersions := Seq(
 				"2.10.6",
 				"2.11.8",
-				"2.12.1"
+				buildScalaVersion
 			),
 
 			libraryDependencies ++= Seq(
 				"commons-codec" % "commons-codec" % "1.10",
-				"org.scalatest" %% "scalatest" % "3.0.1" % "test"
+				"org.scalatest" %% "scalatest" % "3.0.2" % "test"
 			)
 		)
 	)
