@@ -9,6 +9,8 @@ import com.github.mt_sito.mr_scala_libs.utils._
 trait MrScalaLibsFactory {
 	/** クラスユーティリティ */
 	val classUtil: ClassUtil
+	/** 日時 */
+	val clock: Clock
 	/** 数値ユーティリティ */
 	val numberUtil: NumberUtil
 	/** パスユーティリティ */
@@ -26,6 +28,8 @@ trait MrScalaLibsFactory {
 object MrScalaLibsFactoryImpl extends MrScalaLibsFactory {
 	/** {@inheritDoc} */
 	val classUtil: ClassUtil = new ClassUtilImpl(this)
+	/** {@inheritDoc} */
+	val clock: Clock = new ClockImpl(this)
 	/** {@inheritDoc} */
 	val numberUtil: NumberUtil = new NumberUtilImpl(this)
 	/** {@inheritDoc} */
