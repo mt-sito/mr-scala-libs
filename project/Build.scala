@@ -4,9 +4,9 @@ import Keys._
 
 object ApplicationBuild extends Build {
 	val appName = "mr-scala-libs"
-	val appVersion = "2.2.0"
+	val appVersion = "2.2.1"
 	val appOrganization = "com.github.mt_sito"
-	val buildScalaVersion = "2.12.2"
+	val buildScalaVersion = "2.12.4"
 
 	lazy val root = Project(id = appName,
 		base = file("."),
@@ -19,8 +19,8 @@ object ApplicationBuild extends Build {
 			publishTo := Some(Resolver.file("file",  new File(Path.userHome.absolutePath+"/.m2/repository"))),
 
 			crossScalaVersions := Seq(
-				"2.10.6",
-				"2.11.8",
+				"2.10.7",
+				"2.11.12",
 				buildScalaVersion
 			),
 
