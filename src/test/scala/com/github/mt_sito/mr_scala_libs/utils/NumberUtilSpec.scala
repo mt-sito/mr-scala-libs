@@ -8,7 +8,7 @@ import org.scalatest.FlatSpec
  * NumberUtil テストスペッククラス。
  */
 class NumberUtilSpec extends FlatSpec {
-	val numberUtil = MrScalaLibsFactoryImpl.numberUtil
+	val numberUtil = new MrScalaLibsFactoryImpl().numberUtil
 
 
 	"isDigit" should "null の場合 false を返す" in {

@@ -102,7 +102,7 @@ class SecureUtilImpl(factory: MrScalaLibsFactory) extends SecureUtil {
 		if (ver != version) return false
 
 		val saltPos = hash.lastIndexOf(PASSWORD_SEP)
-		if (saltPos == -1) return false
+		if (saltPos == verPos) return false
 		val salt = hash.substring(verPos + 1, saltPos)
 
 		return hash.equals(hashPassword(password, salt, stretchCount, algorithm, ver))

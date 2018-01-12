@@ -8,7 +8,7 @@ import org.scalatest.FlatSpec
  * StringUtil テストスペッククラス。
  */
 class StringUtilSpec extends FlatSpec {
-	val stringUtil = MrScalaLibsFactoryImpl.stringUtil
+	val stringUtil = new MrScalaLibsFactoryImpl().stringUtil
 
 
 	"trimWide" should "前後の全角スペースを除外する" in {
@@ -17,6 +17,12 @@ class StringUtilSpec extends FlatSpec {
 
 	it should "除外ファイルのみの場合空文字を返す" in {
 		assert(stringUtil.trimWide(" \t\r　\t\n 　") === "")
+	}
+
+	it should "null の場合、AssertionError スローする" in {
+		intercept[AssertionError] {
+			stringUtil.trimWide(null)
+		}
 	}
 
 	"katakanaToHiragana" should "カタカナがひらがなへ変換される" in {

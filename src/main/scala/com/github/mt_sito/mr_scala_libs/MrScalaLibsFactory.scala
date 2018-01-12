@@ -25,7 +25,11 @@ trait MrScalaLibsFactory {
 	val stringUtil: StringUtil
 }
 
-object MrScalaLibsFactoryImpl extends MrScalaLibsFactory {
+
+/**
+ * Mr scala libs ファクトリ実装クラス。
+ */
+class MrScalaLibsFactoryImpl extends MrScalaLibsFactory {
 	/** {@inheritDoc} */
 	val classUtil: ClassUtil = new ClassUtilImpl(this)
 	/** {@inheritDoc} */

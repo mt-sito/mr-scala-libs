@@ -10,7 +10,7 @@ import org.scalatest.FlatSpec
  * Clock テストスペッククラス。
  */
 class ClockSpec extends FlatSpec {
-	val clock = MrScalaLibsFactoryImpl.clock
+	val clock = new MrScalaLibsFactoryImpl().clock
 
 
 	"now" should "UTC の現在日時を返す" in {

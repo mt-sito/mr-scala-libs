@@ -10,7 +10,7 @@ import org.scalatest.FlatSpec
  * ClassUtil テストスペッククラス。
  */
 class ClassUtilSpec extends FlatSpec {
-	val classUtil = MrScalaLibsFactoryImpl.classUtil
+	val classUtil = new MrScalaLibsFactoryImpl().classUtil
 
 
 	class CLThread extends Thread {

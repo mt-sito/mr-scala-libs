@@ -1,5 +1,7 @@
 package com.github.mt_sito.mr_scala_libs.utils
 
+import java.io.File
+
 import com.github.mt_sito.mr_scala_libs.MrScalaLibsFactoryImpl
 import org.scalatest.FlatSpec
 
@@ -8,11 +10,15 @@ import org.scalatest.FlatSpec
  * PathUtil テストスペッククラス。
  */
 class PathUtilSpec extends FlatSpec {
-	val pathUtil = MrScalaLibsFactoryImpl.pathUtil
+	val pathUtil = new MrScalaLibsFactoryImpl().pathUtil
 
 
 	"fileName" should "ファイル名を返す" in {
 		assert(pathUtil.fileName("""D:\data\aaa.txt""", "\\") === "aaa.txt")
+	}
+
+	it should "Linux の場合ファイル名を返す" in {
+		assert(pathUtil.fileName("""/data/aaa.txt""", "/") === "aaa.txt")
 	}
 
 	it should "セパレータで終わる場合ディレクトリ名を返す" in {
@@ -52,12 +58,20 @@ class PathUtilSpec extends FlatSpec {
 		}
 	}
 
+	it should "Windows でドライブレターがなく UTC でもない場合からもw時を返す" in {
+		assert(pathUtil.fileName("D\\a", "\\") === "")
+	}
+
 	"fileName(File)" should "ファイル名を返す" in {
-		assert(pathUtil.fileName("""D:\data\aaa.txt""", "\\") === "aaa.txt")
+		assert(pathUtil.fileName(new File("""D:\data\aaa.txt"""), "\\") === "aaa.txt")
 	}
 
 	"parentPath" should "親ディレクトリパスを返す" in {
 		assert(pathUtil.parentPath("""D:\data\aaa.txt""", "\\") === """D:\data""")
+	}
+
+	it should "Linux の場合親ディレクトリパスを返す" in {
+		assert(pathUtil.parentPath("""/data/aaa.txt""", "/") === """/data""")
 	}
 
 	it should "セパレータで終わる場合親ディレクトリパスを返す" in {
@@ -152,5 +166,9 @@ class PathUtilSpec extends FlatSpec {
 		intercept[IllegalArgumentException] {
 			pathUtil.nameCount("""D:\data\aaa.txt""", null)
 		}
+	}
+
+	"nameCount(File)" should "名前要素数を返す" in {
+		assert(pathUtil.nameCount(new File("""D:\data\aaa.txt"""), "\\") === 2)
 	}
 }

@@ -26,6 +26,8 @@ class ClassUtilImpl(factory: MrScalaLibsFactory) extends ClassUtil {
 	override def classLoader: ClassLoader = {
 		val t = Thread.currentThread
 		val c = t.getContextClassLoader
+		// $COVERAGE-OFF$
 		if (c != null) c else t.getClass.getClassLoader
+		// $COVERAGE-ON$
 	}
 }
