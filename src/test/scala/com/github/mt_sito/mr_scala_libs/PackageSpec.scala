@@ -38,4 +38,11 @@ class PackageSpec extends FlatSpec {
 		}
 		assert(closeable.closed)
 	}
+
+	it should "リソースが null の場合何もしない" in {
+		val resource: Closeable = null
+		using(resource) { r =>
+			assert(r == null)
+		}
+	}
 }

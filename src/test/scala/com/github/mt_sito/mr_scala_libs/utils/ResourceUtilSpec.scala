@@ -26,6 +26,11 @@ class ResourceUtilSpec extends FlatSpec {
 		}
 	}
 
+	it should "null の場合、AssertionError スローする" in {
+		intercept[AssertionError] {
+			resourceUtil.getSource(null)
+		}
+	}
 
 	it should "クラスパス内に存在するファイルの場合、指定したファイルのソースを返す" in {
 		using(resourceUtil.getSource(

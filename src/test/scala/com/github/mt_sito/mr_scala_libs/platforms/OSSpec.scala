@@ -39,7 +39,7 @@ class OSSpec extends FlatSpec {
 		assert(OS.WINDOWS.pathPrefixLength("""C:\""") === 3)
 	}
 
-	it should "WINDOWS で UNC の場合 3 を返す" in {
+	it should "WINDOWS で UNC の場合 2 を返す" in {
 		assert(OS.WINDOWS.pathPrefixLength("""\\MYPC\C$\""") === 2)
 	}
 

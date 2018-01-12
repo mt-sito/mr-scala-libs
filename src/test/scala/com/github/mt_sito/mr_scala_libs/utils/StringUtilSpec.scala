@@ -19,6 +19,12 @@ class StringUtilSpec extends FlatSpec {
 		assert(stringUtil.trimWide(" \t\r　\t\n 　") === "")
 	}
 
+	it should "null の場合、AssertionError スローする" in {
+		intercept[AssertionError] {
+			stringUtil.trimWide(null)
+		}
+	}
+
 	"katakanaToHiragana" should "カタカナがひらがなへ変換される" in {
 		assert(stringUtil.katakanaToHiragana("カタカナヴヵヶあ") === "かたかなうかけあ")
 	}

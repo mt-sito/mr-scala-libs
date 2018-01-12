@@ -84,4 +84,18 @@ class SecureUtilSpec extends FlatSpec {
 
 		assert(secureUtil.verifyPassword(password, hashPassword))
 	}
+
+	it should "パスワードセパレータがない場合 false" in {
+		val password = "1"
+		val hashPassword = "1$30c3fa14defc4d0cb94d660063a46d1f$BZaHD+bkEIRw7Fg7k4thsxP8epys6m2c5ervFAgBIegnuF5uFzCttIqW3Azzc5Kk1rEvRN4apO4eUcLs+AdpQA=="
+
+		assert(!secureUtil.verifyPassword(password, hashPassword, 9999, "SHA-512", 1))
+	}
+
+	it should "パスワードセパレータが 1 つしかない場合 false" in {
+		val password = "1"
+		val hashPassword = "1@30c3fa14defc4d0cb94d660063a46d1f$BZaHD+bkEIRw7Fg7k4thsxP8epys6m2c5ervFAgBIegnuF5uFzCttIqW3Azzc5Kk1rEvRN4apO4eUcLs+AdpQA=="
+
+		assert(!secureUtil.verifyPassword(password, hashPassword, 9999, "SHA-512", 1))
+	}
 }
