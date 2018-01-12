@@ -8,7 +8,7 @@ import org.scalatest.FlatSpec
  * PathUtil テストスペッククラス。
  */
 class PathUtilSpec extends FlatSpec {
-	val pathUtil = MrScalaLibsFactoryImpl.pathUtil
+	val pathUtil = new MrScalaLibsFactoryImpl().pathUtil
 
 
 	"fileName" should "ファイル名を返す" in {

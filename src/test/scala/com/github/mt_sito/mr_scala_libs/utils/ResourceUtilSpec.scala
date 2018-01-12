@@ -10,7 +10,7 @@ import org.scalatest.FlatSpec
  * ResourceUtil テストスペッククラス。
  */
 class ResourceUtilSpec extends FlatSpec {
-	val resourceUtil = MrScalaLibsFactoryImpl.resourceUtil
+	val resourceUtil = new MrScalaLibsFactoryImpl().resourceUtil
 
 
 	"getSource" should "存在するファイルの場合、指定したファイルのソースを返す" in {

@@ -8,7 +8,7 @@ import org.scalatest.FlatSpec
  * SecureUtil テストスペッククラス。
  */
 class SecureUtilSpec extends FlatSpec {
-	val secureUtil = MrScalaLibsFactoryImpl.secureUtil
+	val secureUtil = new MrScalaLibsFactoryImpl().secureUtil
 
 
 	"randomToken32" should "毎回違う識別子を返す" in {

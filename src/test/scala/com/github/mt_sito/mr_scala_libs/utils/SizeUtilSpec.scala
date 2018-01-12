@@ -8,7 +8,7 @@ import org.scalatest.FlatSpec
  * SizeUtil テストスペッククラス。
  */
 class SizeUtilSpec extends FlatSpec {
-	val sizeUtil = MrScalaLibsFactoryImpl.sizeUtil
+	val sizeUtil = new MrScalaLibsFactoryImpl().sizeUtil
 
 
 	"siString" should "0 を与えた場合バイト表記を返す" in {
