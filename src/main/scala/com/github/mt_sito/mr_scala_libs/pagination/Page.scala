@@ -44,7 +44,7 @@ case class Page[T](no: Int, limit: Int, list: Seq[T] = Nil, allCount: Long = 0L)
 		val minTmp = if (tmp <= 0) 1 else tmp
 		val min = if (no <= padding) 1 else if (no + padding <= maxPage) no - padding + shift else minTmp
 		val tmp2 = min + padding * 2 - shift
-		val max = if (tmp2 <= maxPage) tmp2 else if (no + padding < maxPage) no + padding else maxPage
+		val max = if (tmp2 <= maxPage) tmp2 else maxPage
 		Range.inclusive(min, max).toSeq
 	}
 }
