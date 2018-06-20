@@ -1,6 +1,6 @@
 name := "mr-scala-libs"
 
-version := "2.3.0"
+version := "2.4.0"
 
 organization := "com.github.mt_sito"
 
