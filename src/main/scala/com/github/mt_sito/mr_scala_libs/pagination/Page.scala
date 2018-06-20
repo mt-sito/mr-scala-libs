@@ -27,7 +27,7 @@ case class Page[T](no: Int, limit: Int, list: Seq[T] = Nil, allCount: Long = 0L)
 	lazy val nextNo: Int = if (hasNext) no + 1 else no
 
 	/** 最大ページ番号 */
-	lazy val maxPage: Int = ((allCount - 1) / limit + 1).toInt
+	lazy val maxNo: Int = ((allCount - 1) / limit + 1).toInt
 
 
 	/**
@@ -40,11 +40,11 @@ case class Page[T](no: Int, limit: Int, list: Seq[T] = Nil, allCount: Long = 0L)
 		val padding = maxRange / 2
 		val shift = if (maxRange % 2 == 0) 1 else 0
 
-		val tmp = maxPage - padding * 2 + shift
+		val tmp = maxNo - padding * 2 + shift
 		val minTmp = if (tmp <= 0) 1 else tmp
-		val min = if (no <= padding) 1 else if (no + padding <= maxPage) no - padding + shift else minTmp
+		val min = if (no <= padding) 1 else if (no + padding <= maxNo) no - padding + shift else minTmp
 		val tmp2 = min + padding * 2 - shift
-		val max = if (tmp2 <= maxPage) tmp2 else maxPage
+		val max = if (tmp2 <= maxNo) tmp2 else maxNo
 		Range.inclusive(min, max).toSeq
 	}
 }
