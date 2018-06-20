@@ -59,8 +59,8 @@ class PageSpec extends FlatSpec {
 		assert(Page(1, 5, Nil, 6).nextNo === 2)
 	}
 
-	"maxPage" should "全件数が 4 で limit が 3 の場合 2 を返す" in {
-		assert(Page(1, 3, Nil, 4).maxPage === 2)
+	"maxNo" should "全件数が 4 で limit が 3 の場合 2 を返す" in {
+		assert(Page(1, 3, Nil, 4).maxNo === 2)
 	}
 
 	"ranges" should "1 ページの場合 1 - 10 を返す" in {
